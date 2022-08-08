@@ -1,0 +1,22 @@
+- name: Install Apache on Web server
+  hosts: 
+    - web1
+    - web2
+  vars:
+    app: 
+      - apache2
+      - php
+  tasks:
+    - name: Install all apps server
+      apt:
+        name: "{{ app }}"
+        state: present
+        update_cache: yes
+      become: true
+
+    - name: Start apache server
+      service: 
+        name: "{{ app[0] }}"
+        state: started
+        enabled: yes
+      become: true
