@@ -1,0 +1,15 @@
+- name: Uninstall Apache on Web server
+  hosts: 
+    - web1
+    - web2
+    - loadbalancer
+  vars:
+    apps:
+      - apache2
+      - php
+  tasks:
+    - name: Uninstall Apache server
+      apt:
+        name: "{{ apps }}"
+        state: absent
+      become: true

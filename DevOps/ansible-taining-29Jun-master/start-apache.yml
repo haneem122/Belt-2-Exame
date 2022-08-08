@@ -1,0 +1,11 @@
+- name: Install Apache on Web server
+  hosts: 
+    - web1
+    - web2
+  tasks:
+    - name: Start apache server
+      service: 
+        name: apache2
+        state: started
+        enabled: yes
+      become: true

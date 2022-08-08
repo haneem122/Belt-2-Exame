@@ -1,0 +1,12 @@
+- name: Create users
+  hosts:
+    - local
+    - web1
+    - web2
+  tasks:
+    - name: Create Saurabh User
+      user:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ users }}"
+      become: true
